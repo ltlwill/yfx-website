@@ -1,0 +1,7 @@
+# 悦斐舜跨境物流（深圳）有限公司
+# 说明：域名购买后请将下方域名替换为真实域名
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.yfs-logistics.com/sitemap.xml
