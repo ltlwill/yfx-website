@@ -87,17 +87,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: rgba(8, 26, 53, .92);
   box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
 }
-.header-inner { display: flex; align-items: center; gap: 24px; height: var(--header-h); }
+.header-inner { display: flex; align-items: center; gap: 24px; height: var(--header-h); min-width: 0; }
 
-.logo { display: flex; align-items: center; gap: 10px; color: #fff; flex-shrink: 0; }
+.logo { display: flex; align-items: center; gap: 10px; color: #fff; min-width: 0; }
 .logo-mark {
-  width: 42px; height: 42px; border-radius: 12px;
+  width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
   background: linear-gradient(135deg, var(--red-600), var(--red-500));
   display: grid; place-items: center;
   box-shadow: 0 6px 16px rgba(214, 36, 48, .4);
 }
 .logo-mark svg { width: 22px; height: 22px; color: #fff; }
-.logo-text { display: flex; flex-direction: column; line-height: 1.25; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.logo-text strong, .logo-text em {
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 .logo-text strong { font-size: 17px; letter-spacing: .02em; }
 .logo-text em { font-style: normal; font-size: 10px; letter-spacing: .22em; color: rgba(255,255,255,.6); }
 
@@ -125,7 +128,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nav-phone svg { width: 15px; height: 15px; }
 .nav-phone:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(214, 36, 48, .5); }
 
-.header-actions { display: flex; align-items: center; gap: 10px; }
+.header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .lang-toggle {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 8px 14px; border-radius: 999px;
@@ -178,7 +181,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @keyframes floatPlane { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
 @keyframes dashMove { to { stroke-dashoffset: -24; } }
 
-.hero-inner { position: relative; display: grid; grid-template-columns: 1.25fr .75fr; gap: 40px; align-items: center; }
+.hero-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 40px; align-items: center; }
 .hero-badge {
   display: inline-block; padding: 7px 16px; margin-bottom: 22px;
   font-size: 13px; font-weight: 600; letter-spacing: .06em;
@@ -205,7 +208,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: 999px; backdrop-filter: blur(4px);
 }
 
-.hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .stat-card {
   padding: 22px 18px; text-align: center;
   background: rgba(255, 255, 255, .07);
@@ -272,7 +275,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    核心服务
    ===================================================== */
 .services { background: var(--bg-page); }
-.cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.cards-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
 .service-card {
   position: relative; padding: 34px 26px;
   background: #fff; border: 1px solid var(--line);
@@ -312,7 +315,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    优势
    ===================================================== */
 .advantages { background: var(--bg-soft); }
-.adv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.adv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .adv-item {
   position: relative; padding: 34px 30px 30px;
   background: #fff; border-radius: var(--radius);
@@ -339,7 +342,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ===================================================== */
 .process { background: var(--bg-page); }
 .steps {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;
   counter-reset: step; position: relative;
 }
 .steps { padding-top: 26px; }
@@ -370,7 +373,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    关于我们
    ===================================================== */
 .about { background: var(--bg-soft); }
-.about-inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; }
+.about-inner { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 60px; align-items: center; }
 .about-copy .section-tag { margin-bottom: 14px; }
 .about-copy h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; margin-bottom: 20px; }
 .about-copy p { font-size: 15px; color: var(--text-600); margin-bottom: 14px; }
@@ -425,7 +428,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     linear-gradient(160deg, var(--navy-900), var(--navy-800));
   color: #fff;
 }
-.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.contact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .contact-card {
   padding: 34px 28px; text-align: center;
   background: rgba(255, 255, 255, .06);
@@ -452,7 +455,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ===================================================== */
 .site-footer { background: var(--navy-900); color: rgba(255, 255, 255, .72); }
 .footer-grid {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.3fr);
   gap: 40px; padding: 64px 0 48px;
 }
 .footer-logo { margin-bottom: 16px; }
@@ -510,16 +513,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    响应式
    ===================================================== */
 @media (max-width: 1024px) {
-  .cards-grid { grid-template-columns: repeat(2, 1fr); }
-  .steps { grid-template-columns: repeat(2, 1fr); }
-  .hero-inner { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-inner { grid-template-columns: minmax(0, 1fr); }
   .hero-stats { max-width: 560px; }
   .hero-plane { display: none; }
-  .about-inner { grid-template-columns: 1fr; gap: 44px; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .about-inner { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 860px) {
+  .header-inner { gap: 12px; }
+  .logo { gap: 8px; }
+  .logo-mark { width: 36px; height: 36px; border-radius: 10px; }
+  .logo-mark svg { width: 19px; height: 19px; }
+  .logo-text strong { font-size: 15px; }
+  .logo-text em { font-size: 9px; letter-spacing: .16em; }
   .main-nav {
     position: fixed; top: var(--header-h); left: 0; right: 0;
     flex-direction: column; align-items: stretch; gap: 2px;
@@ -534,15 +543,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .nav-phone { margin: 12px 0 0; justify-content: center; }
   .nav-burger { display: flex; }
   .section { padding: 72px 0; }
-  .contact-grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
-  .adv-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: minmax(0, 1fr); max-width: 440px; margin-inline: auto; }
+  .adv-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 560px) {
-  .cards-grid { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; }
-  .hero-stats { grid-template-columns: 1fr 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 30px; padding: 48px 0 36px; }
+  .cards-grid { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-grid { grid-template-columns: minmax(0, 1fr); gap: 30px; padding: 48px 0 36px; }
   .hero h1 { font-size: 30px; }
   .hero-cta .btn { width: 100%; justify-content: center; }
   .stat-card strong { font-size: 27px; }
